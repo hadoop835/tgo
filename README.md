@@ -16,6 +16,30 @@ TGO is an open-source AI agent customer service platform dedicated to helping en
 
 <img src="resources/home_en.png" width="100%">
 
+## 🚀 Quick Start
+
+### System Requirements
+- **CPU**: >= 2 Core
+- **RAM**: >= 4 GiB
+- **OS**: macOS / Linux / WSL2
+
+### One-Click Deployment
+
+Run the following command on your server to check requirements, clone the repository, and start the services:
+
+```bash
+REF=latest curl -fsSL https://raw.githubusercontent.com/tgoai/tgo/main/bootstrap.sh | bash
+```
+
+> **For users in China** (using Gitee and Aliyun mirrors):
+> ```bash
+> REF=latest curl -fsSL https://gitee.com/tgoai/tgo/raw/main/bootstrap_cn.sh | bash
+> ```
+
+---
+
+For more details, please visit the [Documentation](https://tgo.ai).
+
 ## ✨ Features
 
 ### 🤖 AI Agent Orchestration
@@ -92,27 +116,3 @@ TGO is an open-source AI agent customer service platform dedicated to helping en
 | **Dashboard** <br> <img src="resources/screenshot/en/home_dark.png" width="100%"> | **Agent Orchestration** <br> <img src="resources/screenshot/en/agent_dark.png" width="100%"> |
 | **Knowledge Base** <br> <img src="resources/screenshot/en/knowledge_dark.png" width="100%"> | **Q&A Debugging** <br> <img src="resources/screenshot/en/knowledge_qa_dark.png" width="100%"> |
 | **MCP Tools** <br> <img src="resources/screenshot/en/mcp_dark.png" width="100%"> | **Platform Admin** <br> <img src="resources/screenshot/en/platform_dark.png" width="100%"> |
-
-## 🚀 Quick Start
-
-### System Requirements
-- **CPU**: >= 2 Core
-- **RAM**: >= 4 GiB
-- **OS**: macOS / Linux / WSL2
-
-### One-Click Deployment
-
-Run the following command on your server to check requirements, clone the repository, and start the services:
-
-```bash
-REF=latest curl -fsSL https://raw.githubusercontent.com/tgoai/tgo/main/bootstrap.sh | bash
-```
-
-> **For users in China** (using Gitee and Aliyun mirrors):
-> ```bash
-> REF=latest curl -fsSL https://gitee.com/tgoai/tgo/raw/main/bootstrap_cn.sh | bash
-> ```
-
----
-
-For more details, please visit the [Documentation](https://tgo.ai).
