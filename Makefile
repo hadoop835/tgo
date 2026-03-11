@@ -33,6 +33,7 @@ PLUGIN_DIR := repos/tgo-plugin-runtime
 DEVICE_DIR := repos/tgo-device-control
 WEB_DIR := repos/tgo-web
 WIDGET_DIR := repos/tgo-widget-app
+CLI_DIR := repos/tgo-cli
 
 # Development ports (to avoid conflicts)
 API_PORT := 8000
@@ -68,6 +69,8 @@ help:
 	@echo "  make install-api      Install tgo-api only"
 	@echo "  make install-ai       Install tgo-ai only"
 	@echo "  make install-rag      Install tgo-rag only (requires torch)"
+	@echo "  make install-cli      Install tgo-cli"
+	@echo "  make build-cli        Build tgo-cli"
 	@echo "  make install-<svc>    Install specific service (platform/workflow/plugin/device)"
 	@echo ""
 	@echo "$(GREEN)Infrastructure (Docker):$(RESET)"
@@ -212,6 +215,14 @@ install-frontend:
 	@cd $(WEB_DIR) && npm install --legacy-peer-deps
 	@cd $(WIDGET_DIR) && npm install --legacy-peer-deps
 	@echo "$(GREEN)Frontend dependencies installed$(RESET)"
+
+install-cli:
+	@echo "  $(CYAN)Installing tgo-cli...$(RESET)"
+	@cd $(CLI_DIR) && npm install --legacy-peer-deps
+
+build-cli:
+	@echo "  $(CYAN)Building tgo-cli...$(RESET)"
+	@cd $(CLI_DIR) && npm run build
 
 # ==========================================================
 # Database Migrations
