@@ -61,6 +61,7 @@ for domain in "${DOMAINS[@]}"; do
 
     # Use webroot mode - certbot writes challenge files to the webroot
     # nginx serves them via /.well-known/acme-challenge/
+    # --force-renewal ensures we renew even if certbot thinks it's not due yet
     docker run --rm \
         -v "$CERTBOT_DIR/conf:/etc/letsencrypt" \
         -v "$CERTBOT_DIR/www:/var/www/certbot" \
@@ -71,6 +72,7 @@ for domain in "${DOMAINS[@]}"; do
         --non-interactive \
         --agree-tos \
         --no-eff-email \
+        --force-renewal \
         --email "$EMAIL" \
         -d "$domain" || {
         echo "[WARN] Failed to get certificate for $domain"
@@ -81,8 +83,8 @@ for domain in "${DOMAINS[@]}"; do
     # Copy certificate to nginx ssl directory
     mkdir -p "$SSL_DIR/$domain"
     if [ -f "$CERTBOT_DIR/conf/live/$domain/fullchain.pem" ]; then
-        cp "$CERTBOT_DIR/conf/live/$domain/fullchain.pem" "$SSL_DIR/$domain/cert.pem"
-        cp "$CERTBOT_DIR/conf/live/$domain/privkey.pem" "$SSL_DIR/$domain/key.pem"
+        cp -L "$CERTBOT_DIR/conf/live/$domain/fullchain.pem" "$SSL_DIR/$domain/cert.pem"
+        cp -L "$CERTBOT_DIR/conf/live/$domain/privkey.pem" "$SSL_DIR/$domain/key.pem"
         echo "[INFO] Certificate installed for: $domain"
         SUCCESS_COUNT=$((SUCCESS_COUNT + 1))
     fi
